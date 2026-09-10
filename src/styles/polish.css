@@ -5,6 +5,26 @@
   outline-offset: 4px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 14px;
+  border: 1px solid var(--cyan);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: 600 12px/1.2 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  transform: translateY(-180%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 ::selection {
   background: rgba(53, 217, 255, 0.22);
   color: var(--text);
@@ -14,6 +34,11 @@
 .case-header {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header {
+  position: relative;
+  z-index: 20;
 }
 
 .site-header::before,
@@ -627,5 +652,8 @@
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
