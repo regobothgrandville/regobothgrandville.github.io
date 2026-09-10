@@ -5,6 +5,7 @@ import { SectionLabel } from './components/SectionLabel'
 import { projects, type ProjectId } from './data/projects'
 import { skillGroups } from './data/skills'
 
+const cvHref = '/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf'
 const navigation = [
   ['PROFIL', '#profil'], ['COMPÉTENCES', '#competences'], ['PROJETS', '#projets'], ['EXPÉRIENCE', '#experience'], ['CONTACT', '#contact'],
 ] as const
@@ -18,7 +19,7 @@ function App() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Retour en haut">RG<span>.</span></a>
         <nav aria-label="Navigation principale">{navigation.map(([label, href]) => <a href={href} key={href}>{label}</a>)}</nav>
-        <a className="button button--small button--ghost" href="#contact">CV ↗</a>
+        <a className="button button--small button--ghost" href={cvHref} target="_blank" rel="noreferrer" aria-label="Ouvrir mon CV de stage au format PDF">CV ↗</a>
       </header>
 
       <main>
@@ -71,7 +72,7 @@ function App() {
 
         <section className="section" id="parcours"><SectionLabel index="05" title="PARCOURS" /><div className="timeline"><article><span className="timeline__node" /><time>2024</time><h3>BAC GÉNÉRAL</h3><p>Mention Bien · Maths · NSI · Maths expertes</p></article><article><span className="timeline__node" /><time>2024</time><h3>BUT R&T</h3><p>IUT de Villetaneuse · Université Sorbonne Paris Nord</p></article><article><span className="timeline__node" /><time>2026</time><h3>CYBERSÉCURITÉ</h3><p>Parcours de spécialisation</p></article><article className="timeline__next"><span className="timeline__node" /><time>2027</time><h3>PROCHAINE ÉTAPE</h3><p>Stage de 4 mois · février</p></article></div></section>
 
-        <section className="section contact-section" id="contact"><SectionLabel index="06" title="CONTACT" /><p className="contact-kicker">UN PROJET, UNE OPPORTUNITÉ, UNE CONNEXION ?</p><h2>Échangeons<span>.</span></h2><div className="contact-actions"><a className="button button--primary" href="mailto:rggrandville@gmail.com">ME CONTACTER →</a><div><a href="https://linkedin.com/in/rego-grandville" target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href="https://github.com/regobothgrandville" target="_blank" rel="noreferrer">GITHUB ↗</a><a href="#top">CV ↗</a></div></div><div className="contact-status"><span /> DISPONIBLE POUR UN STAGE · FÉVRIER 2027</div></section>
+        <section className="section contact-section" id="contact"><SectionLabel index="06" title="CONTACT" /><p className="contact-kicker">UN PROJET, UNE OPPORTUNITÉ, UNE CONNEXION ?</p><h2>Échangeons<span>.</span></h2><div className="contact-actions"><a className="button button--primary" href="mailto:rggrandville@gmail.com">ME CONTACTER →</a><div><a href="https://linkedin.com/in/rego-grandville" target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href="https://github.com/regobothgrandville" target="_blank" rel="noreferrer">GITHUB ↗</a><a href={cvHref} target="_blank" rel="noreferrer" aria-label="Ouvrir mon CV de stage au format PDF">CV ↗</a></div></div><div className="contact-status"><span /> DISPONIBLE POUR UN STAGE · FÉVRIER 2027</div></section>
       </main>
       <footer><a className="brand" href="#top">RG<span>.</span></a><span>RÉSEAUX · SYSTÈMES · CYBERSÉCURITÉ</span><span>PORTFOLIO NODE // ONLINE</span></footer>
     </div>
