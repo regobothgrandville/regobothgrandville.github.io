@@ -1,10 +1,11 @@
+import type { ReactNode } from 'react'
 import type { ProjectDetail } from '../data/projectDetails'
 
 interface ProjectCaseStudyProps {
   project: ProjectDetail
 }
 
-function NumberedSection({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
+function NumberedSection({ number, title, children }: { number: string; title: string; children: ReactNode }) {
   return (
     <section className="case-section">
       <div className="case-section__label"><span>{number}</span><strong>{title}</strong></div>
