@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react'
 import type { PortfolioProject, ProjectId } from '../data/projects'
 
 interface ProjectCardProps {
@@ -10,6 +11,11 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index, active = false, onActivate, onDeactivate }: ProjectCardProps) {
   const activate = () => onActivate?.(project.id)
+  const openProject = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    window.history.pushState(null, '', project.href)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+  }
 
   return (
     <article
@@ -31,7 +37,7 @@ export function ProjectCard({ project, index, active = false, onActivate, onDeac
           <span className="tech-tag" key={domain}>{domain}</span>
         ))}
       </div>
-      <a className="text-link" href={project.href} aria-label={`Ouvrir l'étude de cas : ${project.title}`}>
+      <a className="text-link" href={project.href} onClick={openProject} aria-label={`Ouvrir l'étude de cas : ${project.title}`}>
         OUVRIR L’ÉTUDE DE CAS →
       </a>
     </article>
