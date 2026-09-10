@@ -6,7 +6,7 @@ Portfolio personnel de **Regoboth Grandville**, étudiant en BUT Réseaux & Tél
 
 ## Statut
 
-Le portfolio est actuellement en développement. La branche `master` reste la référence stable ; les évolutions sont préparées sur `develop` avant intégration.
+Le portfolio est actuellement en phase de finalisation avant publication. La branche `master` reste la référence stable ; les évolutions sont préparées et validées sur `develop` avant intégration.
 
 ## Direction du projet
 
@@ -25,26 +25,27 @@ L'expérience est pensée pour deux niveaux de lecture :
 - CSS
 - ESLint
 - GitHub Actions
-- GitHub Pages
+- GitHub Pages pour la publication finale
 
 ## Architecture
 
 ```text
 .github/
-  workflows/       Automatisation CI et déploiement
-public/             Ressources statiques publiques
+  workflows/       Validation continue du projet
+public/             Ressources statiques, CV, SEO et fallback GitHub Pages
 src/
-  assets/           Ressources utilisées par l'application
   components/       Composants réutilisables
   data/             Contenu structuré du portfolio
-  pages/            Pages et études de cas
-  styles/           Fondations et styles globaux
+  pages/            Études de cas et page 404 applicative
+  styles/           Styles globaux, études de cas et responsive
 ```
 
 ## Développement local
 
+Le dépôt contient un `package-lock.json` et utilise des versions épinglées. Pour reproduire l'environnement validé par la CI :
+
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -55,10 +56,24 @@ npm run lint
 npm run build
 ```
 
+La CI GitHub Actions exécute également `npm ci`, puis le lint et le build sur `develop`, `master` et les pull requests associées.
+
+## Routes principales
+
+```text
+/
+/projects/infrastructure-securisee
+/projects/pentest-controle
+/projects/application-collaborative
+/projects/gestionnaire-reseau
+```
+
+Les routes inconnues sont renvoyées par le fallback GitHub Pages vers l'application, qui affiche ensuite une page 404 dédiée.
+
 ## Branches
 
 - `master` : version stable destinée à la publication ;
-- `develop` : intégration des évolutions en cours ;
+- `develop` : intégration des évolutions validées avant release ;
 - branches `feature/*` : à utiliser pour les évolutions isolées lorsque nécessaire.
 
 ## Confidentialité
