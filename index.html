@@ -6,6 +6,15 @@
     <meta name="theme-color" content="#080B10" />
     <meta name="description" content="Portfolio de Regoboth Grandville, étudiant en Réseaux et Télécommunications, parcours Cybersécurité." />
     <title>Regoboth Grandville | Réseaux · Systèmes · Cybersécurité</title>
+    <script>
+      (function () {
+        var route = sessionStorage.getItem('portfolio-route');
+        if (route) {
+          sessionStorage.removeItem('portfolio-route');
+          history.replaceState(null, '', route);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
