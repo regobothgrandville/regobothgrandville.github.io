@@ -5,6 +5,7 @@ import { projectDetails } from './data/projectDetails'
 import { ProjectCaseStudy } from './pages/ProjectCaseStudy'
 import './styles/global.css'
 import './styles/case-study.css'
+import './styles/polish.css'
 
 const root = document.getElementById('root')
 
