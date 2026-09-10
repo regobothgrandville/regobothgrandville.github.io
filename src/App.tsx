@@ -33,7 +33,12 @@ function App() {
           </div>
           <div className="observatory" aria-label="Topologie représentant mes domaines techniques">
             <div className="observatory__halo" />
-            <div className="portrait-frame"><span className="portrait-frame__edge" /><span className="portrait-frame__node">NODE_00</span><div className="portrait-placeholder"><span>PHOTO</span><small>À INSÉRER</small></div></div>
+            <div className="portrait-frame">
+              <span className="portrait-frame__edge" />
+              <span className="portrait-frame__node">NODE_00 // PROFILE</span>
+              <img className="portrait-image" src="/images/portrait.jpg" alt="Portrait de Regoboth Grandville" width="300" height="400" fetchPriority="high" />
+              <span className="portrait-frame__scan" aria-hidden="true" />
+            </div>
             <span className="connection connection--a"><i /></span><span className="connection connection--b"><i /></span><span className="connection connection--c"><i /></span><span className="connection connection--d"><i /></span>
             <NetworkNode label="SÉCURITÉ" className="node--security" active /><NetworkNode label="RÉSEAU" className="node--network" /><NetworkNode label="SYSTÈMES" className="node--systems" /><NetworkNode label="AUTOMATISATION" className="node--automation" active />
             <div className="telemetry"><span>OBSERVABILITÉ // ACTIVE</span><strong>04</strong><small>DOMAINES CONNECTÉS</small></div>
