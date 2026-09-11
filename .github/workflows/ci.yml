@@ -26,8 +26,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Restore exact CV
+        run: node scripts/restore-cv.mjs
+
       - name: Lint
         run: npm run lint
 
       - name: Build
         run: npm run build
+
+      - name: Verify built CV
+        run: |
+          test "$(stat -c%s dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" -eq 123975
+          echo "1999a1d843afac51a0c2ba7ce18f1a72e23845d2eabd046de89e2162bc0133ae  dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf" | sha256sum -c -
