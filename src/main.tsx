@@ -7,6 +7,7 @@ import { ProjectCaseStudy } from './pages/ProjectCaseStudy'
 import './styles/global.css'
 import './styles/case-study.css'
 import './styles/polish.css'
+import './styles/home-observatory.css'
 
 const root = document.getElementById('root')
 
