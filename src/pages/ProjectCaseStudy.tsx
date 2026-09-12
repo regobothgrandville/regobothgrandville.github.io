@@ -5,6 +5,13 @@ interface ProjectCaseStudyProps {
   project: ProjectDetail
 }
 
+const prj01Evidence = [
+  { label: '01', title: 'Analyse du besoin', text: 'Étude du besoin client et des enjeux de cybersécurité pour cadrer l’architecture cible.' },
+  { label: '02', title: 'Architecture sécurisée', text: 'Conception sur dossier d’une architecture réseau sécurisée adaptée au contexte multi-sites.' },
+  { label: '03', title: 'Migration & chiffrage', text: 'Définition d’une stratégie de migration, estimation budgétaire et sélection du matériel.' },
+  { label: '04', title: 'Restitution', text: 'Rédaction de la prestation et présentation des choix techniques lors de la soutenance.' },
+] as const
+
 function NumberedSection({ number, title, children }: { number: string; title: string; children: ReactNode }) {
   return (
     <section className="case-section">
@@ -39,6 +46,22 @@ function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
   )
 }
 
+function EvidencePanel() {
+  return (
+    <div className="evidence-panel" aria-label="Livrables et preuves de réalisation du projet">
+      <div className="evidence-panel__head"><span>PROJECT EVIDENCE // PRJ_01</span><span>4 LIVRABLES DOCUMENTÉS</span></div>
+      <div className="evidence-grid">
+        {prj01Evidence.map((item) => (
+          <article className="evidence-card" key={item.label}>
+            <span className="evidence-card__index">{item.label}</span>
+            <div><h3>{item.title}</h3><p>{item.text}</p></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
   return (
     <div className="case-study">
@@ -63,7 +86,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
         </section>
 
         <NumberedSection number="01" title="PROBLÈME"><p className="case-lead">{project.problem}</p></NumberedSection>
-        <NumberedSection number="02" title="ARCHITECTURE"><ArchitectureDiagram project={project} /></NumberedSection>
+        <NumberedSection number="02" title="ARCHITECTURE"><ArchitectureDiagram project={project} />{project.slug === 'infrastructure-securisee' && <EvidencePanel />}</NumberedSection>
         <NumberedSection number="03" title="MA CONTRIBUTION"><div className="case-list">{project.contribution.map((item) => <p key={item}>{item}</p>)}</div></NumberedSection>
         <NumberedSection number="04" title="CHOIX TECHNIQUES"><div className="choice-grid">{project.choices.map((choice) => <article key={choice.title}><h3>{choice.title}</h3><p>{choice.text}</p></article>)}</div></NumberedSection>
         <NumberedSection number="05" title="DIFFICULTÉS → SOLUTIONS"><div className="difficulty-grid">{project.difficulties.map((item) => <article key={item.problem}><div><span>PROBLÈME</span><p>{item.problem}</p></div><div><span>SOLUTION</span><p>{item.solution}</p></div></article>)}</div></NumberedSection>
