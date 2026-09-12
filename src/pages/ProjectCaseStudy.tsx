@@ -12,6 +12,13 @@ const prj01Evidence = [
   { label: '04', title: 'Restitution', text: 'Rédaction de la prestation et présentation des choix techniques lors de la soutenance.' },
 ] as const
 
+const prj03Evidence = [
+  { label: '01', title: 'Interface Flask', text: 'Routes Web, sessions utilisateur et vues d’agenda sont implémentées dans app.py.' },
+  { label: '02', title: 'Transport TCP / UDP', text: 'Les actions critiques utilisent un canal TCP dédié et les notifications rapides un canal UDP.' },
+  { label: '03', title: 'Serveur concurrent', text: 'Le serveur central écoute les deux transports et traite les connexions TCP via des threads dédiés.' },
+  { label: '04', title: 'Modèle PostgreSQL', text: 'Le schéma persiste utilisateurs, rôles, agendas, équipes, participations et événements.' },
+] as const
+
 const pentestWorkflow = ['Reconnaissance', 'Analyse', 'Exploitation contrôlée', 'Évaluation du risque', 'Remédiation'] as const
 
 function NumberedSection({ number, title, children }: { number: string; title: string; children: ReactNode }) {
@@ -49,8 +56,40 @@ function PentestLabDiagram({ project }: { project: ProjectDetail }) {
   )
 }
 
+function CollaborativeAppDiagram({ project }: { project: ProjectDetail }) {
+  return (
+    <figure className="collab-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
+      <figcaption className="architecture-diagram__head">
+        <span id={`architecture-title-${project.slug}`}>APPLICATION FLOW // {project.index}</span>
+        <span>CODE-BACKED VIEW</span>
+      </figcaption>
+      <div className="collab-diagram__canvas">
+        <div className="collab-node collab-node--client">
+          <small>CLIENT</small><strong>Interface Web</strong><span>Flask · sessions · agendas</span>
+        </div>
+        <div className="collab-link collab-link--main" aria-hidden="true"><i /></div>
+        <div className="collab-node collab-node--app">
+          <small>APPLICATION</small><strong>Python / Flask</strong><span>Logique collaborative · rôles · authentification</span>
+        </div>
+        <div className="collab-branches" aria-hidden="true"><span /><span /></div>
+        <div className="collab-services">
+          <div className="collab-node collab-node--service"><small>PERSISTANCE</small><strong>PostgreSQL</strong><span>Utilisateurs · rôles · agendas · équipes · événements</span></div>
+          <div className="collab-node collab-node--service"><small>TÉLÉMÉTRIE RÉSEAU</small><strong>Serveur TCP + UDP</strong><span>TCP 9000 · UDP 9001 · traitement concurrent</span></div>
+        </div>
+      </div>
+      <div className="collab-protocols" aria-label="Rôle des transports réseau">
+        <div><span>TCP</span><strong>Actions critiques</strong><small>Connexion + accusé de réception</small></div>
+        <div><span>UDP</span><strong>Notifications rapides</strong><small>Datagrammes sans connexion</small></div>
+        <div><span>SQL</span><strong>État collaboratif</strong><small>Persistance relationnelle</small></div>
+      </div>
+      <div className="architecture-diagram__legend"><span><i /> FLUX DOCUMENTÉS DANS LE DÉPÔT</span><span>FLASK · SOCKETS · POSTGRESQL</span></div>
+    </figure>
+  )
+}
+
 function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
   if (project.slug === 'pentest-controle') return <PentestLabDiagram project={project} />
+  if (project.slug === 'application-collaborative') return <CollaborativeAppDiagram project={project} />
   return (
     <figure className="architecture-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
@@ -75,12 +114,12 @@ function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
   )
 }
 
-function EvidencePanel() {
+function EvidencePanel({ index, items, suffix }: { index: string; items: readonly { label: string; title: string; text: string }[]; suffix: string }) {
   return (
     <div className="evidence-panel" aria-label="Livrables et preuves de réalisation du projet">
-      <div className="evidence-panel__head"><span>PROJECT EVIDENCE // PRJ_01</span><span>4 LIVRABLES DOCUMENTÉS</span></div>
+      <div className="evidence-panel__head"><span>PROJECT EVIDENCE // {index}</span><span>{items.length} {suffix}</span></div>
       <div className="evidence-grid">
-        {prj01Evidence.map((item) => (
+        {items.map((item) => (
           <article className="evidence-card" key={item.label}>
             <span className="evidence-card__index">{item.label}</span>
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
@@ -115,7 +154,11 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
         </section>
 
         <NumberedSection number="01" title="PROBLÈME"><p className="case-lead">{project.problem}</p></NumberedSection>
-        <NumberedSection number="02" title="ARCHITECTURE"><ArchitectureDiagram project={project} />{project.slug === 'infrastructure-securisee' && <EvidencePanel />}</NumberedSection>
+        <NumberedSection number="02" title="ARCHITECTURE">
+          <ArchitectureDiagram project={project} />
+          {project.slug === 'infrastructure-securisee' && <EvidencePanel index="PRJ_01" items={prj01Evidence} suffix="LIVRABLES DOCUMENTÉS" />}
+          {project.slug === 'application-collaborative' && <EvidencePanel index="PRJ_03" items={prj03Evidence} suffix="PREUVES DANS LE CODE" />}
+        </NumberedSection>
         <NumberedSection number="03" title="MA CONTRIBUTION"><div className="case-list">{project.contribution.map((item) => <p key={item}>{item}</p>)}</div></NumberedSection>
         <NumberedSection number="04" title="CHOIX TECHNIQUES"><div className="choice-grid">{project.choices.map((choice) => <article key={choice.title}><h3>{choice.title}</h3><p>{choice.text}</p></article>)}</div></NumberedSection>
         <NumberedSection number="05" title="DIFFICULTÉS → SOLUTIONS"><div className="difficulty-grid">{project.difficulties.map((item) => <article key={item.problem}><div><span>PROBLÈME</span><p>{item.problem}</p></div><div><span>SOLUTION</span><p>{item.solution}</p></div></article>)}</div></NumberedSection>
