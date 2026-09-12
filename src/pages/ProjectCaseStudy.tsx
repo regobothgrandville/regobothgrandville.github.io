@@ -87,9 +87,38 @@ function CollaborativeAppDiagram({ project }: { project: ProjectDetail }) {
   )
 }
 
+function NetworkResourceDiagram({ project }: { project: ProjectDetail }) {
+  return (
+    <figure className="resource-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
+      <figcaption className="architecture-diagram__head">
+        <span id={`architecture-title-${project.slug}`}>RESOURCE PIPELINE // {project.index}</span>
+        <span>LOGICAL PROJECT VIEW</span>
+      </figcaption>
+      <div className="resource-diagram__canvas">
+        <div className="resource-node"><small>ENTRÉE</small><strong>Interface Web</strong><span>Demande et paramètres réseau</span></div>
+        <div className="resource-arrow" aria-hidden="true"><i /></div>
+        <div className="resource-node resource-node--core"><small>APPLICATION</small><strong>Python / Flask</strong><span>Validation · logique d’attribution</span></div>
+        <div className="resource-arrow" aria-hidden="true"><i /></div>
+        <div className="resource-node"><small>SOURCE DE VÉRITÉ</small><strong>PostgreSQL</strong><span>Ressources et données d’adressage</span></div>
+      </div>
+      <div className="resource-generator">
+        <div className="resource-generator__head"><span>GÉNÉRATION</span><strong>Moteur de configuration</strong><small>Transformation des ressources en paramètres réseau</small></div>
+        <div className="resource-generator__items">
+          <div><span>01</span><strong>IP</strong><small>Attribution d’adresses</small></div>
+          <div><span>02</span><strong>VLAN</strong><small>Segmentation logique</small></div>
+          <div><span>03</span><strong>VRF</strong><small>Contexte de routage</small></div>
+          <div><span>04</span><strong>CONFIG</strong><small>Éléments pour équipements réseau</small></div>
+        </div>
+      </div>
+      <div className="architecture-diagram__legend"><span><i /> CHAÎNE FONCTIONNELLE DU PROJET</span><span>WEB · FLASK · POSTGRESQL · AUTOMATISATION</span></div>
+    </figure>
+  )
+}
+
 function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
   if (project.slug === 'pentest-controle') return <PentestLabDiagram project={project} />
   if (project.slug === 'application-collaborative') return <CollaborativeAppDiagram project={project} />
+  if (project.slug === 'gestionnaire-reseau') return <NetworkResourceDiagram project={project} />
   return (
     <figure className="architecture-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
