@@ -6,7 +6,9 @@ Portfolio personnel de **Regoboth Grandville**, étudiant en BUT Réseaux & Tél
 
 ## Statut
 
-Le portfolio est actuellement en phase de finalisation avant publication. La branche `master` reste la référence stable ; les évolutions sont préparées et validées sur `develop` avant intégration.
+Le portfolio est publié sur GitHub Pages : **https://regobothgrandville.github.io/**.
+
+La branche `master` correspond à la version de production. Les évolutions sont préparées dans des branches dédiées, validées par la CI puis intégrées après vérification.
 
 ## Direction du projet
 
@@ -25,13 +27,13 @@ L'expérience est pensée pour deux niveaux de lecture :
 - CSS
 - ESLint
 - GitHub Actions
-- GitHub Pages pour la publication finale
+- GitHub Pages
 
 ## Architecture
 
 ```text
 .github/
-  workflows/       Validation continue du projet
+  workflows/       Validation continue et déploiement GitHub Pages
 public/             Ressources statiques, CV, SEO et fallback GitHub Pages
 src/
   components/       Composants réutilisables
@@ -56,7 +58,7 @@ npm run lint
 npm run build
 ```
 
-La CI GitHub Actions exécute également `npm ci`, puis le lint et le build sur `develop`, `master` et les pull requests associées.
+La CI GitHub Actions exécute `npm ci`, le lint, le build et vérifie également que le PDF du CV produit dans `dist/` correspond exactement au fichier attendu. Le workflow GitHub Pages construit ensuite la version de production et la déploie depuis `master`.
 
 ## Routes principales
 
@@ -72,9 +74,9 @@ Les routes inconnues sont renvoyées par le fallback GitHub Pages vers l'applica
 
 ## Branches
 
-- `master` : version stable destinée à la publication ;
-- `develop` : intégration des évolutions validées avant release ;
-- branches `feature/*` : à utiliser pour les évolutions isolées lorsque nécessaire.
+- `master` : version stable publiée ;
+- `develop` : branche d'intégration disponible lorsque nécessaire ;
+- branches `feature/*`, `fix/*`, `chore/*` ou `docs/*` : évolutions isolées avant intégration.
 
 ## Confidentialité
 
