@@ -4,13 +4,8 @@ import { ProjectCard } from './components/ProjectCard'
 import { SectionLabel } from './components/SectionLabel'
 import { projects, type ProjectId } from './data/projects'
 import { skillGroups } from './data/skills'
-import portraitData0 from './assets/portraitData0'
-import portraitData1 from './assets/portraitData1'
-import portraitData2 from './assets/portraitData2'
-import portraitData3 from './assets/portraitData3'
 
 const cvHref = '/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf'
-const portraitSrc = `data:image/webp;base64,${portraitData0}${portraitData1}${portraitData2}${portraitData3}`
 const navigation = [
   ['PROFIL', '#profil'], ['COMPÉTENCES', '#competences'], ['PROJETS', '#projets'], ['EXPÉRIENCE', '#experience'], ['CONTACT', '#contact'],
 ] as const
@@ -49,7 +44,7 @@ function App() {
             <div className="portrait-frame">
               <span className="portrait-frame__edge" aria-hidden="true" />
               <span className="portrait-frame__node">NODE_00 // PROFILE</span>
-              <img className="portrait-image" src={portraitSrc} alt="Portrait de Regoboth Grandville" width="600" height="800" fetchPriority="high" />
+              <img className="portrait-image" src="/images/portrait.jpg" alt="Portrait de Regoboth Grandville" width="600" height="800" fetchPriority="high" />
               <span className="portrait-frame__scan" aria-hidden="true" />
             </div>
             <span className="connection connection--a" aria-hidden="true"><i /></span><span className="connection connection--b" aria-hidden="true"><i /></span><span className="connection connection--c" aria-hidden="true"><i /></span><span className="connection connection--d" aria-hidden="true"><i /></span>
