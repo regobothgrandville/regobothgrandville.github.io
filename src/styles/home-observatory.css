@@ -1,0 +1,105 @@
+.project-card__signature {
+  position: relative;
+  height: 68px;
+  margin: 30px 0 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(53, 217, 255, 0.025), transparent 58%);
+  overflow: hidden;
+}
+
+.project-card__signature-node {
+  position: absolute;
+  top: 27px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(53, 217, 255, 0.55);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px rgba(53, 217, 255, 0.025);
+}
+
+.project-card__signature-node--a { left: 7%; }
+.project-card__signature-node--b { left: 47%; }
+.project-card__signature-node--c { right: 7%; }
+
+.project-card__signature-link {
+  position: absolute;
+  top: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(53, 217, 255, 0.18), rgba(53, 217, 255, 0.62), rgba(53, 217, 255, 0.18));
+}
+
+.project-card__signature-link--a { left: calc(7% + 12px); width: calc(40% - 12px); }
+.project-card__signature-link--b { left: calc(47% + 12px); right: calc(7% + 12px); }
+
+.project-card__signature-packet {
+  position: absolute;
+  top: 30px;
+  left: 9%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px rgba(53, 217, 255, 0.75);
+  opacity: 0;
+}
+
+.project-card--active .project-card__signature-packet,
+.project-card:hover .project-card__signature-packet,
+.project-card:focus-within .project-card__signature-packet {
+  animation: project-signature-packet 1.8s linear infinite;
+}
+
+.project-card__signature--prj-01 .project-card__signature-node--b {
+  width: 18px;
+  height: 18px;
+  top: 24px;
+  border-radius: 50%;
+}
+
+.project-card__signature--prj-01 .project-card__signature-node--c {
+  box-shadow: 0 -14px 0 -5px var(--surface), 0 -14px 0 -4px rgba(53, 217, 255, 0.45), 0 14px 0 -5px var(--surface), 0 14px 0 -4px rgba(53, 217, 255, 0.45);
+}
+
+.project-card__signature--prj-02 .project-card__signature-node--a { border-radius: 50%; }
+.project-card__signature--prj-02 .project-card__signature-node--b { left: 43%; width: 28%; height: 42px; top: 12px; border-style: dashed; background: rgba(53, 217, 255, 0.018); }
+.project-card__signature--prj-02 .project-card__signature-node--c { right: 11%; }
+.project-card__signature--prj-02 .project-card__signature-link--a { width: calc(36% - 12px); }
+.project-card__signature--prj-02 .project-card__signature-link--b { left: 71%; right: calc(11% + 12px); }
+
+.project-card__signature--prj-03 .project-card__signature-node--b { width: 24px; height: 24px; top: 21px; transform: rotate(45deg); }
+.project-card__signature--prj-03 .project-card__signature-node--c { border-radius: 50%; box-shadow: 0 0 0 5px rgba(53, 217, 255, 0.035); }
+
+.project-card__signature--prj-04 .project-card__signature-node { border-radius: 3px; }
+.project-card__signature--prj-04 .project-card__signature-node--c {
+  width: 24px;
+  right: 5%;
+  box-shadow: 0 -13px 0 -5px var(--surface), 0 -13px 0 -4px rgba(53, 217, 255, 0.42), 0 13px 0 -5px var(--surface), 0 13px 0 -4px rgba(53, 217, 255, 0.42);
+}
+
+.project-card h3 { margin-top: 26px; }
+.experience-grid { grid-template-columns: repeat(4, 1fr); }
+.experience-grid article { position: relative; overflow: hidden; }
+.experience-grid article::after { content: ''; position: absolute; left: 28px; right: 28px; bottom: 0; height: 1px; background: linear-gradient(90deg, var(--cyan), transparent); opacity: 0.28; }
+
+@keyframes project-signature-packet {
+  0% { left: 9%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { left: 90%; opacity: 0; }
+}
+
+@media (max-width: 1100px) {
+  .experience-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 620px) {
+  .project-card { min-height: 360px; }
+  .project-card__signature { margin-top: 24px; height: 60px; }
+  .project-card h3 { margin-top: 24px; }
+  .experience-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__signature-packet { animation: none !important; }
+}
