@@ -12,6 +12,8 @@ const prj01Evidence = [
   { label: '04', title: 'Restitution', text: 'Rédaction de la prestation et présentation des choix techniques lors de la soutenance.' },
 ] as const
 
+const pentestWorkflow = ['Reconnaissance', 'Analyse', 'Exploitation contrôlée', 'Évaluation du risque', 'Remédiation'] as const
+
 function NumberedSection({ number, title, children }: { number: string; title: string; children: ReactNode }) {
   return (
     <section className="case-section">
@@ -21,7 +23,34 @@ function NumberedSection({ number, title, children }: { number: string; title: s
   )
 }
 
+function PentestLabDiagram({ project }: { project: ProjectDetail }) {
+  return (
+    <figure className="lab-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
+      <figcaption className="architecture-diagram__head">
+        <span id={`architecture-title-${project.slug}`}>ISOLATED LAB // {project.index}</span>
+        <span>HOST-ONLY · PÉRIMÈTRE PÉDAGOGIQUE</span>
+      </figcaption>
+      <div className="lab-diagram__canvas">
+        <div className="lab-node lab-node--operator"><small>MACHINE D’AUDIT</small><strong>Kali Linux</strong><span>Nmap · Metasploit</span></div>
+        <div className="lab-link" aria-hidden="true"><i /></div>
+        <div className="lab-segment">
+          <div className="lab-segment__label"><span>VIRTUALBOX</span><strong>Réseau Host-Only</strong><small>ISOLÉ DES SYSTÈMES TIERS</small></div>
+          <div className="lab-segment__targets">
+            <div className="lab-node"><small>CIBLE 01</small><strong>Windows XP SP1</strong><span>Machine prévue pour l’exercice</span></div>
+            <div className="lab-node"><small>CIBLE 02</small><strong>Metasploitable 2</strong><span>Machine volontairement vulnérable</span></div>
+          </div>
+        </div>
+      </div>
+      <div className="lab-workflow" aria-label="Méthodologie de test d'intrusion">
+        {pentestWorkflow.map((step, index) => <div key={step}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step}</strong></div>)}
+      </div>
+      <div className="architecture-diagram__legend"><span><i /> ENVIRONNEMENT CONTRÔLÉ</span><span>AUCUN SYSTÈME TIERS RÉEL</span></div>
+    </figure>
+  )
+}
+
 function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
+  if (project.slug === 'pentest-controle') return <PentestLabDiagram project={project} />
   return (
     <figure className="architecture-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
