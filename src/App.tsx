@@ -9,7 +9,7 @@ import portraitData1 from './assets/portraitData1'
 import portraitData2 from './assets/portraitData2'
 import portraitData3 from './assets/portraitData3'
 
-const cvHref = '/cv.html'
+const cvHref = '/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf'
 const portraitSrc = `data:image/webp;base64,${portraitData0}${portraitData1}${portraitData2}${portraitData3}`
 const navigation = [
   ['PROFIL', '#profil'], ['COMPÉTENCES', '#competences'], ['PROJETS', '#projets'], ['EXPÉRIENCE', '#experience'], ['CONTACT', '#contact'],
@@ -31,7 +31,7 @@ function App() {
       <header className="site-header">
         <a className="brand" href="#top" onClick={(event) => scrollWithoutHash(event, '#top')} aria-label="Retour en haut">RG<span>.</span></a>
         <nav aria-label="Navigation principale">{navigation.map(([label, href]) => <a href={href} onClick={(event) => scrollWithoutHash(event, href)} key={href}>{label}</a>)}</nav>
-        <a className="button button--small button--ghost" href={cvHref} target="_blank" rel="noreferrer" aria-label="Ouvrir mon CV dans un nouvel onglet">CV ↗</a>
+        <a className="button button--small button--ghost" href={cvHref} target="_blank" rel="noreferrer" aria-label="Ouvrir mon CV PDF dans un nouvel onglet">CV ↗</a>
       </header>
 
       <main id="main-content">
@@ -84,7 +84,7 @@ function App() {
 
         <section className="section" id="parcours"><SectionLabel index="05" title="PARCOURS" /><div className="timeline"><article><span className="timeline__node" aria-hidden="true" /><time>2024</time><h3>BAC GÉNÉRAL</h3><p>Mention Bien · Maths · NSI · Maths expertes</p></article><article><span className="timeline__node" aria-hidden="true" /><time>2024</time><h3>BUT R&T</h3><p>IUT de Villetaneuse · Université Sorbonne Paris Nord</p></article><article><span className="timeline__node" aria-hidden="true" /><time>2025</time><h3>CYBERSÉCURITÉ</h3><p>Début du parcours de spécialisation</p></article><article className="timeline__next"><span className="timeline__node" aria-hidden="true" /><time>2027</time><h3>PROCHAINE ÉTAPE</h3><p>Stage de 4 mois · février</p></article></div></section>
 
-        <section className="section contact-section" id="contact"><SectionLabel index="06" title="CONTACT" /><p className="contact-kicker">UN PROJET, UNE OPPORTUNITÉ, UNE CONNEXION ?</p><h2>Échangeons<span>.</span></h2><div className="contact-actions"><a className="button button--primary" href="mailto:rggrandville@gmail.com">ME CONTACTER →</a><div><a href="https://linkedin.com/in/rego-grandville" target="_blank" rel="noreferrer" aria-label="Voir mon profil LinkedIn dans un nouvel onglet">LINKEDIN ↗</a><a href="https://github.com/regobothgrandville" target="_blank" rel="noreferrer" aria-label="Voir mon profil GitHub dans un nouvel onglet">GITHUB ↗</a><a href={cvHref} target="_blank" rel="noreferrer" aria-label="Ouvrir mon CV dans un nouvel onglet">CV ↗</a></div></div><div className="contact-status"><span aria-hidden="true" /> DISPONIBLE POUR UN STAGE · FÉVRIER 2027</div></section>
+        <section className="section contact-section" id="contact"><SectionLabel index="06" title="CONTACT" /><p className="contact-kicker">UN PROJET, UNE OPPORTUNITÉ, UNE CONNEXION ?</p><h2>Échangeons<span>.</span></h2><div className="contact-actions"><a className="button button--primary" href="mailto:rggrandville@gmail.com">ME CONTACTER →</a><div><a href="https://linkedin.com/in/rego-grandville" target="_blank" rel="noreferrer" aria-label="Voir mon profil LinkedIn dans un nouvel onglet">LINKEDIN ↗</a><a href="https://github.com/regobothgrandville" target="_blank" rel="noreferrer" aria-label="Voir mon profil GitHub dans un nouvel onglet">GITHUB ↗</a><a href={cvHref} target="_blank" rel="noreferrer" aria-label="Ouvrir mon CV PDF dans un nouvel onglet">CV ↗</a></div></div><div className="contact-status"><span aria-hidden="true" /> DISPONIBLE POUR UN STAGE · FÉVRIER 2027</div></section>
       </main>
       <footer><a className="brand" href="#top" onClick={(event) => scrollWithoutHash(event, '#top')} aria-label="Retour en haut">RG<span>.</span></a><span>RÉSEAUX · SYSTÈMES · CYBERSÉCURITÉ</span><span>PORTFOLIO NODE // ONLINE</span></footer>
     </div>
