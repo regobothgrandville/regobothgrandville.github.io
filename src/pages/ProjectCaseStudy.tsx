@@ -1,16 +1,8 @@
-import type { MouseEvent, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import type { ProjectDetail } from '../data/projectDetails'
 
 interface ProjectCaseStudyProps {
   project: ProjectDetail
-}
-
-const goHome = (event: MouseEvent<HTMLAnchorElement>, section?: string) => {
-  event.preventDefault()
-  window.history.pushState(null, '', '/')
-  window.dispatchEvent(new PopStateEvent('popstate'))
-  if (section) requestAnimationFrame(() => document.querySelector(section)?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
-  else window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 function NumberedSection({ number, title, children }: { number: string; title: string; children: ReactNode }) {
@@ -27,8 +19,8 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
     <div className="case-study">
       <a className="skip-link" href="#case-content">Aller au contenu principal</a>
       <header className="case-header">
-        <a className="brand" href="/" onClick={(event) => goHome(event)} aria-label="Retour à l'accueil">RG<span>.</span></a>
-        <a className="case-back" href="/#projets" onClick={(event) => goHome(event, '#projets')}>← RETOUR AU RÉSEAU DE PROJETS</a>
+        <a className="brand" href="/" aria-label="Retour à l'accueil">RG<span>.</span></a>
+        <a className="case-back" href="/">← RETOUR AU RÉSEAU DE PROJETS</a>
       </header>
 
       <main id="case-content">
@@ -56,7 +48,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
         <section className="case-footer-panel"><div><span className="case-footer-panel__label">TECHNOLOGIES</span><div className="tag-row">{project.technologies.map((tech) => <span className="tech-tag" key={tech}>{tech}</span>)}</div></div>{project.github && <a className="button button--ghost" href={project.github} target="_blank" rel="noreferrer" aria-label={`Voir le dépôt GitHub de ${project.title} dans un nouvel onglet`}>VOIR LE DÉPÔT GITHUB ↗</a>}</section>
       </main>
 
-      <footer className="case-site-footer"><a className="brand" href="/" onClick={(event) => goHome(event)} aria-label="Retour à l'accueil">RG<span>.</span></a><span>NETWORK OBSERVATORY // {project.index}</span></footer>
+      <footer className="case-site-footer"><a className="brand" href="/" aria-label="Retour à l'accueil">RG<span>.</span></a><span>NETWORK OBSERVATORY // {project.index}</span></footer>
     </div>
   )
 }
