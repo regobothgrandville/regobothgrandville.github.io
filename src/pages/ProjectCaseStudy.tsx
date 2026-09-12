@@ -14,6 +14,31 @@ function NumberedSection({ number, title, children }: { number: string; title: s
   )
 }
 
+function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
+  return (
+    <figure className="architecture-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
+      <figcaption className="architecture-diagram__head">
+        <span id={`architecture-title-${project.slug}`}>TOPOLOGY // {project.index}</span>
+        <span>LOGICAL VIEW</span>
+      </figcaption>
+      <div className="architecture-diagram__canvas">
+        {project.architecture.map((item, index) => {
+          const [source, ...targets] = item.split('→').map((part) => part.trim())
+          return (
+            <div className="architecture-diagram__route" key={item}>
+              <span className="architecture-diagram__index">{String(index + 1).padStart(2, '0')}</span>
+              <div className="architecture-diagram__node architecture-diagram__node--source"><small>SOURCE</small><strong>{source}</strong></div>
+              <span className="architecture-diagram__link" aria-hidden="true"><i /></span>
+              <div className="architecture-diagram__node architecture-diagram__node--target"><small>DESTINATION</small><strong>{targets.join(' → ')}</strong></div>
+            </div>
+          )
+        })}
+      </div>
+      <div className="architecture-diagram__legend"><span><i /> ACTIVE ROUTE</span><span>{project.architecture.length} SEGMENTS DOCUMENTÉS</span></div>
+    </figure>
+  )
+}
+
 export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
   return (
     <div className="case-study">
@@ -38,7 +63,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
         </section>
 
         <NumberedSection number="01" title="PROBLÈME"><p className="case-lead">{project.problem}</p></NumberedSection>
-        <NumberedSection number="02" title="ARCHITECTURE"><div className="architecture-flow">{project.architecture.map((item, index) => <div className="architecture-flow__row" key={item}><span className="architecture-flow__node">{String(index + 1).padStart(2, '0')}</span><span className="architecture-flow__line" aria-hidden="true" /><strong>{item}</strong></div>)}</div></NumberedSection>
+        <NumberedSection number="02" title="ARCHITECTURE"><ArchitectureDiagram project={project} /></NumberedSection>
         <NumberedSection number="03" title="MA CONTRIBUTION"><div className="case-list">{project.contribution.map((item) => <p key={item}>{item}</p>)}</div></NumberedSection>
         <NumberedSection number="04" title="CHOIX TECHNIQUES"><div className="choice-grid">{project.choices.map((choice) => <article key={choice.title}><h3>{choice.title}</h3><p>{choice.text}</p></article>)}</div></NumberedSection>
         <NumberedSection number="05" title="DIFFICULTÉS → SOLUTIONS"><div className="difficulty-grid">{project.difficulties.map((item) => <article key={item.problem}><div><span>PROBLÈME</span><p>{item.problem}</p></div><div><span>SOLUTION</span><p>{item.solution}</p></div></article>)}</div></NumberedSection>
