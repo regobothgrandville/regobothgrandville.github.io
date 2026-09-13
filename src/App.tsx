@@ -1,4 +1,4 @@
-import { useState, type MouseEvent } from 'react'
+import { useEffect, useState, type MouseEvent } from 'react'
 import { NetworkNode } from './components/NetworkNode'
 import { ProjectCard } from './components/ProjectCard'
 import { SectionLabel } from './components/SectionLabel'
@@ -9,6 +9,7 @@ const cvHref = '/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf'
 const navigation = [
   ['PROFIL', '#profil'], ['COMPÉTENCES', '#competences'], ['PROJETS', '#projets'], ['EXPÉRIENCE', '#experience'], ['CONTACT', '#contact'],
 ] as const
+const homeTargets = new Set(['#top', '#profil', '#competences', '#projets', '#experience', '#contact'])
 
 const scrollWithoutHash = (event: MouseEvent<HTMLAnchorElement>, target: string) => {
   event.preventDefault()
@@ -20,6 +21,15 @@ const scrollWithoutHash = (event: MouseEvent<HTMLAnchorElement>, target: string)
 function App() {
   const [activeProject, setActiveProject] = useState<ProjectId | null>(null)
   const activeProjectData = projects.find((project) => project.id === activeProject)
+
+  useEffect(() => {
+    const target = window.location.hash
+    if (!homeTargets.has(target)) return
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    document.querySelector(target)?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
+    window.history.replaceState(null, '', window.location.pathname + window.location.search)
+  }, [])
 
   return (
     <div className="app-shell">
