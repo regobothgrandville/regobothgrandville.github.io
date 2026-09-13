@@ -34,7 +34,7 @@ function PentestLabDiagram({ project }: { project: ProjectDetail }) {
   return (
     <figure className="lab-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
-        <span id={`architecture-title-${project.slug}`}>ISOLATED LAB // {project.index}</span>
+        <span id={`architecture-title-${project.slug}`}>LABORATOIRE ISOLÉ // {project.index}</span>
         <span>HOST-ONLY · PÉRIMÈTRE PÉDAGOGIQUE</span>
       </figcaption>
       <div className="lab-diagram__canvas">
@@ -60,8 +60,8 @@ function CollaborativeAppDiagram({ project }: { project: ProjectDetail }) {
   return (
     <figure className="collab-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
-        <span id={`architecture-title-${project.slug}`}>APPLICATION FLOW // {project.index}</span>
-        <span>CODE-BACKED VIEW</span>
+        <span id={`architecture-title-${project.slug}`}>FLUX APPLICATIF // {project.index}</span>
+        <span>VUE BASÉE SUR LE CODE</span>
       </figcaption>
       <div className="collab-diagram__canvas">
         <div className="collab-node collab-node--client">
@@ -74,7 +74,7 @@ function CollaborativeAppDiagram({ project }: { project: ProjectDetail }) {
         <div className="collab-branches" aria-hidden="true"><span /><span /></div>
         <div className="collab-services">
           <div className="collab-node collab-node--service"><small>PERSISTANCE</small><strong>PostgreSQL</strong><span>Utilisateurs · rôles · agendas · équipes · événements</span></div>
-          <div className="collab-node collab-node--service"><small>TÉLÉMÉTRIE RÉSEAU</small><strong>Serveur TCP + UDP</strong><span>TCP 9000 · UDP 9001 · traitement concurrent</span></div>
+          <div className="collab-node collab-node--service"><small>TRANSPORT RÉSEAU</small><strong>Serveur TCP + UDP</strong><span>TCP 9000 · UDP 9001 · traitement concurrent</span></div>
         </div>
       </div>
       <div className="collab-protocols" aria-label="Rôle des transports réseau">
@@ -91,8 +91,8 @@ function NetworkResourceDiagram({ project }: { project: ProjectDetail }) {
   return (
     <figure className="resource-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
-        <span id={`architecture-title-${project.slug}`}>RESOURCE PIPELINE // {project.index}</span>
-        <span>LOGICAL PROJECT VIEW</span>
+        <span id={`architecture-title-${project.slug}`}>CHAÎNE DE TRAITEMENT // {project.index}</span>
+        <span>VUE LOGIQUE DU PROJET</span>
       </figcaption>
       <div className="resource-diagram__canvas">
         <div className="resource-node"><small>ENTRÉE</small><strong>Interface Web</strong><span>Demande et paramètres réseau</span></div>
@@ -123,7 +123,7 @@ function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
     <figure className="architecture-diagram" aria-labelledby={`architecture-title-${project.slug}`}>
       <figcaption className="architecture-diagram__head">
         <span id={`architecture-title-${project.slug}`}>TOPOLOGY // {project.index}</span>
-        <span>LOGICAL VIEW</span>
+        <span>VUE LOGIQUE</span>
       </figcaption>
       <div className="architecture-diagram__canvas">
         {project.architecture.map((item, index) => {
@@ -138,7 +138,7 @@ function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
           )
         })}
       </div>
-      <div className="architecture-diagram__legend"><span><i /> ACTIVE ROUTE</span><span>{project.architecture.length} SEGMENTS DOCUMENTÉS</span></div>
+      <div className="architecture-diagram__legend"><span><i /> FLUX REPRÉSENTÉ</span><span>{project.architecture.length} SEGMENTS DOCUMENTÉS</span></div>
     </figure>
   )
 }
@@ -146,7 +146,7 @@ function ArchitectureDiagram({ project }: { project: ProjectDetail }) {
 function EvidencePanel({ index, items, suffix }: { index: string; items: readonly { label: string; title: string; text: string }[]; suffix: string }) {
   return (
     <div className="evidence-panel" aria-label="Livrables et preuves de réalisation du projet">
-      <div className="evidence-panel__head"><span>PROJECT EVIDENCE // {index}</span><span>{items.length} {suffix}</span></div>
+      <div className="evidence-panel__head"><span>PREUVES DU PROJET // {index}</span><span>{items.length} {suffix}</span></div>
       <div className="evidence-grid">
         {items.map((item) => (
           <article className="evidence-card" key={item.label}>
@@ -170,7 +170,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
 
       <main id="case-content">
         <section className="case-hero">
-          <p className="case-index">{project.index} // CASE STUDY</p>
+          <p className="case-index">{project.index} // ÉTUDE DE CAS</p>
           <h1>{project.title}</h1>
           <p className="case-subtitle">{project.subtitle}</p>
           <div className="case-meta">
