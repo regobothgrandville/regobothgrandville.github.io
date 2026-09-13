@@ -49,7 +49,7 @@ function App() {
             </div>
             <span className="connection connection--a" aria-hidden="true"><i /></span><span className="connection connection--b" aria-hidden="true"><i /></span><span className="connection connection--c" aria-hidden="true"><i /></span><span className="connection connection--d" aria-hidden="true"><i /></span>
             <NetworkNode label="SÉCURITÉ" className="node--security" active /><NetworkNode label="RÉSEAU" className="node--network" /><NetworkNode label="SYSTÈMES" className="node--systems" /><NetworkNode label="AUTOMATISATION" className="node--automation" active />
-            <div className="telemetry"><span>OBSERVABILITÉ // ACTIVE</span><strong>04</strong><small>DOMAINES CONNECTÉS</small></div>
+            <div className="telemetry"><span>DOMAINES TECHNIQUES</span><strong>04</strong><small>DOMAINES</small></div>
           </div>
           <a className="scroll-cue" href="#profil" onClick={(event) => scrollWithoutHash(event, '#profil')}>DÉFILER <span aria-hidden="true">↓</span></a>
         </section>
@@ -61,13 +61,13 @@ function App() {
 
         <section className="section" id="competences">
           <SectionLabel index="02" title="COMPÉTENCES TECHNIQUES" />
-          <div className="section-heading-row"><h2>CAPACITÉS <em>SYSTÈME</em></h2><p>Technologies et méthodes mises en pratique au cours de ma formation, de mes projets et de mon expérience professionnelle.</p></div>
+          <div className="section-heading-row"><h2>COMPÉTENCES <em>TECHNIQUES</em></h2><p>Technologies et méthodes mises en pratique au cours de ma formation, de mes projets et de mon expérience professionnelle.</p></div>
           <div className="skill-grid">{skillGroups.map((group, index) => <article className="skill-card" key={group.id}><div className="skill-card__head"><span>0{index + 1}</span><i aria-hidden="true" /></div><h3>{group.label}</h3><div className="tag-row">{group.skills.map((skill) => <span className="tech-tag" key={skill}>{skill}</span>)}</div></article>)}</div>
         </section>
 
         <section className="section projects-section" id="projets">
           <SectionLabel index="03" title="RÉSEAU DE PROJETS" />
-          <div className="section-heading-row"><h2>PROJETS <em>CONNECTÉS</em></h2><p>Quatre études de cas principales. Survolez une carte ou parcourez-les au clavier pour afficher ses informations techniques.</p></div>
+          <div className="section-heading-row"><h2>ÉTUDES <em>DE CAS</em></h2><p>Quatre études de cas principales. Survolez une carte ou parcourez-les au clavier pour afficher ses informations techniques.</p></div>
           <div className="project-network" data-active={activeProject ?? 'idle'}>
             <div className="project-network__telemetry" aria-live="polite"><span>PROJET // {activeProjectData ? activeProjectData.id.toUpperCase().replace('-', '_') : 'SÉLECTION'}</span><strong>{activeProjectData?.title ?? 'Réseau de projets'}</strong><small>{activeProjectData ? activeProjectData.domains.join(' · ') : 'Sélectionnez un projet pour afficher ses domaines techniques'}</small></div>
             <div className="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} key={project.id} active={activeProject === project.id} onActivate={setActiveProject} onDeactivate={() => setActiveProject(null)} />)}</div>
