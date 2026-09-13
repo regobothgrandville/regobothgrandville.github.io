@@ -31,29 +31,37 @@ const escapeAttribute = (value) => value
   .replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;')
 
-const replaceMeta = (html, selector, value) => {
-  const escaped = escapeAttribute(value)
-  const pattern = new RegExp(`(<meta ${selector}="[^"]+" content=")[^"]*(" \/>)`)
-  return html.replace(pattern, `$1${escaped}$2`)
-}
-
 const baseHtml = await readFile(join('dist', 'index.html'), 'utf8')
 
 for (const project of projects) {
   const title = `${project.title} | Regoboth Grandville`
   const canonical = `${siteUrl}/projects/${project.slug}`
+  const escapedTitle = escapeAttribute(title)
+  const escapedDescription = escapeAttribute(project.description)
   let html = baseHtml
 
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeAttribute(title)}</title>`)
-  html = replaceMeta(html, 'name', 'description')
-    .replace('content="description"', `content="${escapeAttribute(project.description)}"`)
-  html = html.replace(/(<meta name="description" content=")[^"]*(" \/>)/, `$1${escapeAttribute(project.description)}$2`)
-  html = html.replace(/(<meta property="og:title" content=")[^"]*(" \/>)/, `$1${escapeAttribute(title)}$2`)
-  html = html.replace(/(<meta property="og:description" content=")[^"]*(" \/>)/, `$1${escapeAttribute(project.description)}$2`)
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapedTitle}</title>`)
+  html = html.replace(/(<meta name="description" content=")[^"]*(" \/>)/, `$1${escapedDescription}$2`)
+  html = html.replace(/(<meta property="og:title" content=")[^"]*(" \/>)/, `$1${escapedTitle}$2`)
+  html = html.replace(/(<meta property="og:description" content=")[^"]*(" \/>)/, `$1${escapedDescription}$2`)
   html = html.replace(/(<meta property="og:url" content=")[^"]*(" \/>)/, `$1${canonical}$2`)
-  html = html.replace(/(<meta name="twitter:title" content=")[^"]*(" \/>)/, `$1${escapeAttribute(title)}$2`)
-  html = html.replace(/(<meta name="twitter:description" content=")[^"]*(" \/>)/, `$1${escapeAttribute(project.description)}$2`)
+  html = html.replace(/(<meta name="twitter:title" content=")[^"]*(" \/>)/, `$1${escapedTitle}$2`)
+  html = html.replace(/(<meta name="twitter:description" content=")[^"]*(" \/>)/, `$1${escapedDescription}$2`)
   html = html.replace(/(<link rel="canonical" href=")[^"]*(" \/>)/, `$1${canonical}$2`)
+
+  const requiredMetadata = [
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+    `<title>${escapedTitle}</title>`,
+    `<meta name="description" content="${escapedDescription}" />`,
+    `<meta property="og:url" content="${canonical}" />`,
+    `<link rel="canonical" href="${canonical}" />`,
+  ]
+
+  for (const expected of requiredMetadata) {
+    if (!html.includes(expected)) {
+      throw new Error(`Static metadata generation failed for ${project.slug}: missing ${expected}`)
+    }
+  }
 
   const outputDir = join('dist', 'projects', project.slug)
   await mkdir(outputDir, { recursive: true })
