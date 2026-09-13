@@ -69,7 +69,7 @@ function App() {
           <SectionLabel index="03" title="RÉSEAU DE PROJETS" />
           <div className="section-heading-row"><h2>ÉTUDES <em>DE CAS</em></h2><p>Quatre études de cas principales. Parcourez les projets et ouvrez une étude de cas pour consulter ses informations techniques.</p></div>
           <div className="project-network" data-active={activeProject ?? 'idle'}>
-            <div className="project-network__telemetry" aria-live="polite"><span>PROJET // {activeProjectData ? activeProjectData.id.toUpperCase().replace('-', '_') : 'SÉLECTION'}</span><strong>{activeProjectData?.title ?? 'Réseau de projets'}</strong><small>{activeProjectData ? activeProjectData.domains.join(' · ') : 'Sélectionnez un projet pour afficher ses domaines techniques'}</small></div>
+            <div className="project-network__telemetry" aria-hidden="true"><span>PROJET // {activeProjectData ? activeProjectData.id.toUpperCase().replace('-', '_') : 'SÉLECTION'}</span><strong>{activeProjectData?.title ?? 'Réseau de projets'}</strong><small>{activeProjectData ? activeProjectData.domains.join(' · ') : 'Sélectionnez un projet pour afficher ses domaines techniques'}</small></div>
             <div className="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} key={project.id} active={activeProject === project.id} onActivate={setActiveProject} onDeactivate={() => setActiveProject(null)} />)}</div>
           </div>
         </section>
