@@ -22,7 +22,7 @@ export function ProjectCard({ project, index, active = false, onActivate, onDeac
       <span className="project-card__signal" aria-hidden="true" />
       <div className="project-card__topline">
         <span className="project-card__id">PRJ_{String(index + 1).padStart(2, '0')}</span>
-        <span className="project-card__status">● ONLINE</span>
+        <span className="project-card__status">● DOCUMENTÉ</span>
       </div>
       <div className={`project-card__signature project-card__signature--${project.id}`} aria-hidden="true">
         <span className="project-card__signature-node project-card__signature-node--a" />
