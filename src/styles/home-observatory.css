@@ -77,6 +77,11 @@
   box-shadow: 0 -13px 0 -5px var(--surface), 0 -13px 0 -4px rgba(53, 217, 255, 0.42), 0 13px 0 -5px var(--surface), 0 13px 0 -4px rgba(53, 217, 255, 0.42);
 }
 
+.portrait-frame__node {
+  top: auto;
+  bottom: 12px;
+}
+
 .project-card h3 { margin-top: 26px; }
 .experience-grid { grid-template-columns: repeat(4, 1fr); }
 .experience-grid article { position: relative; overflow: hidden; }
