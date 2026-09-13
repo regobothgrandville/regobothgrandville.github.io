@@ -165,7 +165,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
       <a className="skip-link" href="#case-content">Aller au contenu principal</a>
       <header className="case-header">
         <a className="brand" href="/" aria-label="Retour à l'accueil">RG<span>.</span></a>
-        <a className="case-back" href="/">← RETOUR AU RÉSEAU DE PROJETS</a>
+        <a className="case-back" href="/#projets">← RETOUR AU RÉSEAU DE PROJETS</a>
       </header>
 
       <main id="case-content">
