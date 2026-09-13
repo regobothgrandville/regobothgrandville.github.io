@@ -12,7 +12,8 @@ const navigation = [
 
 const scrollWithoutHash = (event: MouseEvent<HTMLAnchorElement>, target: string) => {
   event.preventDefault()
-  document.querySelector(target)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  document.querySelector(target)?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
   window.history.replaceState(null, '', window.location.pathname + window.location.search)
 }
 
