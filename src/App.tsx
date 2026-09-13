@@ -43,13 +43,13 @@ function App() {
             <div className="observatory__halo" aria-hidden="true" />
             <div className="portrait-frame">
               <span className="portrait-frame__edge" aria-hidden="true" />
-              <span className="portrait-frame__node">PROFILE // REGOBOTH GRANDVILLE</span>
+              <span className="portrait-frame__node" aria-hidden="true">PROFILE // REGOBOTH GRANDVILLE</span>
               <img className="portrait-image" src="/images/portrait.jpg" alt="Portrait de Regoboth Grandville" width="600" height="800" fetchPriority="high" />
               <span className="portrait-frame__scan" aria-hidden="true" />
             </div>
             <span className="connection connection--a" aria-hidden="true"><i /></span><span className="connection connection--b" aria-hidden="true"><i /></span><span className="connection connection--c" aria-hidden="true"><i /></span><span className="connection connection--d" aria-hidden="true"><i /></span>
             <NetworkNode label="SÉCURITÉ" className="node--security" active /><NetworkNode label="RÉSEAU" className="node--network" /><NetworkNode label="SYSTÈMES" className="node--systems" /><NetworkNode label="AUTOMATISATION" className="node--automation" active />
-            <div className="telemetry"><span>DOMAINES TECHNIQUES</span><strong>04</strong><small>DOMAINES</small></div>
+            <div className="telemetry" aria-hidden="true"><span>DOMAINES TECHNIQUES</span><strong>04</strong><small>DOMAINES</small></div>
           </div>
           <a className="scroll-cue" href="#profil" onClick={(event) => scrollWithoutHash(event, '#profil')}>DÉFILER <span aria-hidden="true">↓</span></a>
         </section>
