@@ -2,26 +2,31 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const siteUrl = 'https://regobothgrandville.github.io'
-const projects = [
+const pages = [
   {
-    slug: 'infrastructure-securisee',
+    path: 'projects/infrastructure-securisee',
     title: 'Infrastructure sécurisée & haute disponibilité',
     description: 'Concevoir une architecture virtualisée, segmentée et résiliente à partir d’un besoin client simulé.',
   },
   {
-    slug: 'pentest-controle',
+    path: 'projects/pentest-controle',
     title: 'Laboratoire de test d’intrusion contrôlé',
     description: 'Conduire un audit offensif dans un environnement isolé, de la découverte à la remédiation.',
   },
   {
-    slug: 'application-collaborative',
+    path: 'projects/application-collaborative',
     title: 'Application réseau collaborative',
     description: 'Développer une application client/serveur avec persistance, authentification et échanges réseau.',
   },
   {
-    slug: 'gestionnaire-reseau',
+    path: 'projects/gestionnaire-reseau',
     title: 'Gestionnaire de ressources réseau',
     description: 'Automatiser l’attribution de ressources et la génération de configurations à partir d’une application Web.',
+  },
+  {
+    path: 'experience/stage-ia-company',
+    title: 'Stage Développeur & Sécurité chez IA Company',
+    description: 'Retour détaillé sur huit semaines de stage chez IA Company : développement logiciel, cybersécurité, étude de migration de messagerie et développement mobile.',
   },
 ]
 
@@ -33,11 +38,11 @@ const escapeAttribute = (value) => value
 
 const baseHtml = await readFile(join('dist', 'index.html'), 'utf8')
 
-for (const project of projects) {
-  const title = `${project.title} | Regoboth Grandville`
-  const canonical = `${siteUrl}/projects/${project.slug}`
+for (const page of pages) {
+  const title = `${page.title} | Regoboth Grandville`
+  const canonical = `${siteUrl}/${page.path}`
   const escapedTitle = escapeAttribute(title)
-  const escapedDescription = escapeAttribute(project.description)
+  const escapedDescription = escapeAttribute(page.description)
   let html = baseHtml
 
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapedTitle}</title>`)
@@ -59,13 +64,13 @@ for (const project of projects) {
 
   for (const expected of requiredMetadata) {
     if (!html.includes(expected)) {
-      throw new Error(`Static metadata generation failed for ${project.slug}: missing ${expected}`)
+      throw new Error(`Static metadata generation failed for ${page.path}: missing ${expected}`)
     }
   }
 
-  const outputDir = join('dist', 'projects', project.slug)
+  const outputDir = join('dist', ...page.path.split('/'))
   await mkdir(outputDir, { recursive: true })
   await writeFile(join(outputDir, 'index.html'), html)
 }
 
-console.log(`Generated ${projects.length} static project entry pages.`)
+console.log(`Generated ${pages.length} static entry pages.`)
