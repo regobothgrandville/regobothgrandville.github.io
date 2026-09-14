@@ -37,6 +37,13 @@ const mobileWork = [
   'Utilisation collaborative de Git et GitHub : branches, fusions, analyse et résolution de conflits.',
 ]
 
+const methodItems = [
+  ['01', 'Prototypage', 'Développement de premiers concepts à partir de données simulées pour valider le fonctionnement attendu et préparer leur adaptation au projet principal.'],
+  ['02', 'Environnement serveur', 'Les droits disponibles ont orienté le travail vers l’analyse, la conception, les tests accessibles et la rédaction d’une documentation d’intégration exploitable par l’équipe.'],
+  ['03', 'Travail collaboratif', 'La gestion de branches concurrentes et de conflits Git a nécessité d’identifier l’intention des modifications avant fusion puis de contrôler l’absence de régression.'],
+  ['04', 'Validation sur appareil', 'Le visualiseur vocal a été amélioré par cycles successifs : observer, modifier, tester sur téléphone, comparer puis ajuster.'],
+]
+
 export function InternshipCaseStudy() {
   return (
     <div className="case-study internship-case">
@@ -87,7 +94,7 @@ export function InternshipCaseStudy() {
 
         <section className="case-section">
           <div className="case-section__label"><span>06 //</span><h2>MÉTHODE & CONTRAINTES</h2></div>
-          <div className="difficulty-grid"><article><span>01</span><h3>Prototypage</h3><p>Développement de premiers concepts à partir de données simulées pour valider le fonctionnement attendu et préparer leur adaptation au projet principal.</p></article><article><span>02</span><h3>Environnement serveur</h3><p>Les droits disponibles ont orienté le travail vers l’analyse, la conception, les tests accessibles et la rédaction d’une documentation d’intégration exploitable par l’équipe.</p></article><article><span>03</span><h3>Travail collaboratif</h3><p>La gestion de branches concurrentes et de conflits Git a nécessité d’identifier l’intention des modifications avant fusion puis de contrôler l’absence de régression.</p></article><article><span>04</span><h3>Validation sur appareil</h3><p>Le visualiseur vocal a été amélioré par cycles successifs : observer, modifier, tester sur téléphone, comparer puis ajuster.</p></article></div>
+          <div className="evidence-panel"><div className="evidence-panel__head"><span>MÉTHODE DE TRAVAIL</span><span>04 REPÈRES</span></div><div className="evidence-grid">{methodItems.map(([index, title, text]) => <article className="evidence-card" key={index}><span className="evidence-card__index">{index}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div>
         </section>
 
         <section className="case-section">
