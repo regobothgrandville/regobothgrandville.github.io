@@ -86,6 +86,20 @@
 .experience-grid { grid-template-columns: repeat(4, 1fr); }
 .experience-grid article { position: relative; overflow: hidden; }
 .experience-grid article::after { content: ''; position: absolute; left: 28px; right: 28px; bottom: 0; height: 1px; background: linear-gradient(90deg, var(--cyan), transparent); opacity: 0.28; }
+.experience-actions { margin-top: 34px; display: flex; justify-content: flex-end; }
+
+.internship-facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 42px; border: 1px solid var(--line); }
+.internship-facts article { padding: 24px; min-height: 160px; }
+.internship-facts article + article { border-left: 1px solid var(--line); }
+.internship-facts span, .security-flow > article > span, .internship-stack span { font: 9px var(--mono); letter-spacing: .1em; color: var(--cyan); }
+.internship-facts strong { display: block; margin: 12px 0; font-family: var(--display); font-size: 17px; font-weight: 500; }
+.internship-facts p { margin: 0; color: var(--secondary); font-size: 13px; line-height: 1.65; }
+.security-flow { margin-top: 42px; border-top: 1px solid var(--line); }
+.security-flow article { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.security-flow h3 { margin: 0 0 8px; font-size: 18px; }
+.security-flow p { margin: 0; color: var(--secondary); font-size: 14px; line-height: 1.7; }
+.internship-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.internship-stack span { padding: 9px 12px; border: 1px solid rgba(53,217,255,.22); background: rgba(53,217,255,.025); }
 
 @keyframes project-signature-packet {
   0% { left: 9%; opacity: 0; }
@@ -98,11 +112,19 @@
   .experience-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 900px) {
+  .internship-facts { grid-template-columns: 1fr; }
+  .internship-facts article + article { border-left: 0; border-top: 1px solid var(--line); }
+}
+
 @media (max-width: 620px) {
   .project-card { min-height: 360px; }
   .project-card__signature { margin-top: 24px; height: 60px; }
   .project-card h3 { margin-top: 24px; }
   .experience-grid { grid-template-columns: 1fr; }
+  .experience-actions { justify-content: stretch; }
+  .experience-actions .button { width: 100%; justify-content: center; }
+  .security-flow article { grid-template-columns: 34px 1fr; gap: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
