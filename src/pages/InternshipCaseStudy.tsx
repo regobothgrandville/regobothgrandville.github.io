@@ -2,7 +2,7 @@ const missions = [
   {
     index: '01',
     title: 'Prototypage logiciel',
-    text: 'Conception de premiers prototypes de suivi sportif à partir de données simulées, afin de valider les concepts malgré l’absence d’accès aux données réelles de la montre et à l’environnement complet.',
+    text: 'Conception de premiers prototypes de suivi sportif à partir de données simulées pour valider les concepts et préparer leur intégration au projet.',
   },
   {
     index: '02',
@@ -26,7 +26,7 @@ const securityLayers = [
   ['02', 'Protection des données', 'Réflexion sur le chiffrement au repos, les permissions restrictives, la pseudonymisation et le principe du moindre privilège.'],
   ['03', 'Flux sortants', 'Étude d’échanges authentifiés, d’idempotence, de reprise sur erreur et de transport sécurisé vers un service autorisé.'],
   ['04', 'Maintien en sécurité', 'Durcissement Linux, pare-feu, Fail2Ban, sauvegardes, supervision, suivi des vulnérabilités et préparation de la réponse aux incidents.'],
-  ['05', 'Évolution cryptographique', 'Étude en laboratoire de la cryptographie post-quantique, notamment ML-KEM et ML-DSA, sans déploiement en production.'],
+  ['05', 'Évolution cryptographique', 'Étude en laboratoire de la cryptographie post-quantique, notamment ML-KEM et ML-DSA.'],
 ]
 
 const mobileWork = [
@@ -57,7 +57,7 @@ export function InternshipCaseStudy() {
             <div><span>FORMATION</span><strong>BUT R&T · CYBERSÉCURITÉ</strong></div>
             <div><span>DOMAINES</span><strong>DÉVELOPPEMENT · SÉCURITÉ · MOBILE</strong></div>
           </div>
-          <p className="case-note">Cette page présente volontairement le travail sous un angle technique et professionnel sans publier le nom du produit, le rapport de stage ni les informations internes de l’entreprise. Les prototypes, travaux de conception et éléments validés sont distingués des déploiements en environnement réel.</p>
+          <p className="case-note">Les éléments présentés distinguent les travaux de conception, les prototypes testés et les fonctions intégrées, tout en préservant les informations internes de l’entreprise.</p>
         </section>
 
         <section className="case-section">
@@ -72,12 +72,12 @@ export function InternshipCaseStudy() {
 
         <section className="case-section">
           <div className="case-section__label"><span>03 //</span><h2>SÉCURISATION</h2></div>
-          <div><p className="case-lead">Une démarche de défense en profondeur conçue autour du cycle de vie des données et des échanges entre composants.</p><div className="security-flow" aria-label="Couches de sécurisation étudiées">{securityLayers.map(([index, title, text]) => <article key={index}><span>{index}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div><p className="case-note">Le travail a principalement porté sur l’analyse des risques, la conception de l’architecture, la préparation et le test de solutions ainsi que la documentation. L’absence d’accès administrateur au serveur empêchait de présenter l’ensemble comme un déploiement personnel en production ; certaines mesures opérationnelles ont ensuite été adaptées par les membres de l’équipe disposant des accès nécessaires.</p></div>
+          <div><p className="case-lead">Concevoir une démarche de défense en profondeur autour du cycle de vie des données et des échanges entre composants.</p><div className="security-flow" aria-label="Couches de sécurisation étudiées">{securityLayers.map(([index, title, text]) => <article key={index}><span>{index}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div><p className="case-note">Travail centré sur l’analyse des risques, la conception de l’architecture, la préparation et le test de solutions accessibles dans mon environnement, ainsi que la rédaction d’une documentation d’intégration pour l’équipe.</p></div>
         </section>
 
         <section className="case-section">
           <div className="case-section__label"><span>04 //</span><h2>MESSAGERIE</h2></div>
-          <div><p className="case-lead">Préparer une décision de migration plutôt que présenter comme réalisée une migration qui ne l’a pas été.</p><div className="case-list"><p>Cadrage du besoin, de l’existant, des contraintes et des exigences.</p><p>Comparaison d’approches et de solutions selon une grille multicritère.</p><p>Prise en compte de critères techniques, financiers, organisationnels, de sécurité et de protection des données.</p><p>Analyse des risques et préparation des actions nécessaires avant une éventuelle transition.</p><p>Production d’une recommandation argumentée et d’un scénario de migration ; aucune migration n’a été exécutée pendant le stage.</p></div></div>
+          <div><p className="case-lead">Étudier et préparer une évolution de la messagerie professionnelle.</p><div className="case-list"><p>Cadrage du besoin, de l’existant, des contraintes et des exigences.</p><p>Comparaison d’approches et de solutions selon une grille multicritère.</p><p>Prise en compte de critères techniques, financiers, organisationnels, de sécurité et de protection des données.</p><p>Analyse des risques et préparation des actions nécessaires à une transition.</p><p>Production d’une recommandation argumentée et d’un scénario de migration préparatoire.</p></div></div>
         </section>
 
         <section className="case-section">
@@ -86,8 +86,8 @@ export function InternshipCaseStudy() {
         </section>
 
         <section className="case-section">
-          <div className="case-section__label"><span>06 //</span><h2>MÉTHODE & LIMITES</h2></div>
-          <div className="difficulty-grid"><article><span>01</span><h3>Prototype ≠ production</h3><p>Les premiers concepts ont été développés avec des données simulées faute d’accès à l’environnement complet. Ils ont servi de base de validation avant adaptation au projet principal par un autre membre de l’équipe.</p></article><article><span>02</span><h3>Accès techniques limités</h3><p>Les contraintes d’accès au serveur ont conduit à privilégier l’analyse, la conception, les tests possibles et une documentation d’intégration précise plutôt qu’à revendiquer un déploiement non réalisé personnellement.</p></article><article><span>03</span><h3>Travail collaboratif</h3><p>La gestion de branches concurrentes et de conflits Git a nécessité d’identifier l’intention des modifications avant fusion puis de contrôler l’absence de régression.</p></article><article><span>04</span><h3>Validation sur appareil</h3><p>Le visualiseur vocal a été amélioré par cycles successifs : observer, modifier, tester sur téléphone, comparer puis ajuster.</p></article></div>
+          <div className="case-section__label"><span>06 //</span><h2>MÉTHODE & CONTRAINTES</h2></div>
+          <div className="difficulty-grid"><article><span>01</span><h3>Prototypage</h3><p>Développement de premiers concepts à partir de données simulées pour valider le fonctionnement attendu et préparer leur adaptation au projet principal.</p></article><article><span>02</span><h3>Environnement serveur</h3><p>Les droits disponibles ont orienté le travail vers l’analyse, la conception, les tests accessibles et la rédaction d’une documentation d’intégration exploitable par l’équipe.</p></article><article><span>03</span><h3>Travail collaboratif</h3><p>La gestion de branches concurrentes et de conflits Git a nécessité d’identifier l’intention des modifications avant fusion puis de contrôler l’absence de régression.</p></article><article><span>04</span><h3>Validation sur appareil</h3><p>Le visualiseur vocal a été amélioré par cycles successifs : observer, modifier, tester sur téléphone, comparer puis ajuster.</p></article></div>
         </section>
 
         <section className="case-section">
