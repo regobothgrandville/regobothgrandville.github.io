@@ -34,5 +34,6 @@ jobs:
 
       - name: Verify built CV
         run: |
-          test "$(stat -c%s dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" -eq 123975
-          echo "1999a1d843afac51a0c2ba7ce18f1a72e23845d2eabd046de89e2162bc0133ae  dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf" | sha256sum -c -
+          test -s dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf
+          test "$(head -c 5 dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" = "%PDF-"
+          test "$(git hash-object dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" = "3cf54ac5b938e605bc062122970fe01ce2980637"
