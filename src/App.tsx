@@ -55,7 +55,7 @@ function App() {
             <div className="portrait-frame">
               <span className="portrait-frame__edge" aria-hidden="true" />
               <span className="portrait-frame__node" aria-hidden="true">PROFILE // REGOBOTH GRANDVILLE</span>
-              <img className="portrait-image" src="/images/portrait.jpg" alt="Portrait de Regoboth Grandville" width="600" height="800" fetchPriority="high" />
+              <img className="portrait-image" src="/images/portrait-optimized.webp" alt="Portrait de Regoboth Grandville" width="1000" height="1068" fetchPriority="high" />
               <span className="portrait-frame__scan" aria-hidden="true" />
             </div>
             <span className="connection connection--a" aria-hidden="true"><i /></span><span className="connection connection--b" aria-hidden="true"><i /></span><span className="connection connection--c" aria-hidden="true"><i /></span><span className="connection connection--d" aria-hidden="true"><i /></span>
