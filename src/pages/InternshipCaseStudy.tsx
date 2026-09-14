@@ -102,7 +102,7 @@ export function InternshipCaseStudy() {
           <div><p className="case-lead">Une expérience qui a relié réseaux, systèmes, cybersécurité et développement dans un même contexte professionnel.</p><div className="case-list"><p>Approfondissement de l’analyse des risques, de la défense en profondeur, de l’authentification des échanges, de l’anti-rejeu et de la protection des données.</p><p>Mise en pratique de Python, Linux, réseaux, bases de données, Git et sécurité des communications.</p><p>Découverte de React Native, TypeScript, Expo et des contraintes propres au développement mobile.</p><p>Première approche de la cryptographie post-quantique et de ses précautions d’intégration.</p><p>Progression en autonomie, communication technique, coordination et adaptation face à des contraintes réelles.</p></div></div>
         </section>
 
-        <section className="case-footer-panel"><p className="case-footer-panel__label">EXP_01 // FIN DU DOSSIER</p><h2>Voir mes autres <em>réalisations techniques.</em></h2><a className="button button--primary" href="/#projets">EXPLORER LES PROJETS →</a></section>
+        <section className="case-footer-panel"><div><p className="case-footer-panel__label">EXP_01 // FIN DU DOSSIER</p><h2>Voir mes autres <em>réalisations techniques.</em></h2></div><a className="button button--primary" href="/#projets">EXPLORER LES PROJETS →</a></section>
       </main>
       <footer className="case-site-footer"><a className="brand" href="/" aria-label="Retour à l’accueil">RG<span>.</span></a><span>IA COMPANY · JUIN — AOÛT 2026</span><span>PORTFOLIO // EXPÉRIENCE</span></footer>
     </div>
