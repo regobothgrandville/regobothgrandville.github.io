@@ -36,4 +36,4 @@ jobs:
         run: |
           test -s dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf
           test "$(head -c 5 dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" = "%PDF-"
-          test "$(git hash-object dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" = "3cf54ac5b938e605bc062122970fe01ce2980637"
+          test "$(git hash-object dist/CV_GRANDVILLE_Regoboth_BUT3RT_Stage.pdf)" = "844bec45248ba3affe5284bdb55223a31fa5317c"
